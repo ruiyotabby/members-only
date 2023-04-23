@@ -1,9 +1,9 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters
   self.responder = ApplicationResponder
   respond_to :html
-  before_action :configure_permitted_parameters
 
   protected
 
