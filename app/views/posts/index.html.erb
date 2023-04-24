@@ -1,0 +1,8 @@
+<ul style="padding: 0 20px">
+  <% @posts.each do |post| %>
+  <li style="list-style: none">
+    <h3 style="margin: 0"><%= post.title %></h3>
+    <p style="margin: 0 0 10px 0"><%= post.body %></p>
+  </li>
+  <% end %>
+</ul>
