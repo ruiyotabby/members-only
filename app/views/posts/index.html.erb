@@ -1,8 +1,11 @@
 <ul style="padding: 0 20px">
   <% @posts.each do |post| %>
   <li style="list-style: none">
-    <h3 style="margin: 0"><%= post.title %></h3>
-    <p style="margin: 0 0 10px 0"><%= post.body %></p>
+    <h3 style="margin:10px 0 0 0"><%= post.title %></h3>
+    <p style="margin: 0"><%= post.body %></p>
+    <% if user_signed_in? %>
+      <p style="margin: 0 0 15px 50px">Author: <%= current_user.name %></p>
+    <% end %>
   </li>
   <% end %>
 </ul>
