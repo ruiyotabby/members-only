@@ -1,10 +1,22 @@
+<div class="header" >
+  <div><h2>Exclusive Clubhouse</h2></div>
+  <div style="display:flex; gap: 20px;">
+    <% unless user_signed_in? %>
+      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path %>
+    <% else %>
+      <a href="/posts/new">Create Post</a>
+      <%= link_to "Sign out", users_sign_out_path %>
+    <% end %>
+  </div>
+</div>
 <ul style="padding: 0 20px">
   <% @posts.each do |post| %>
   <li style="list-style: none">
     <h3 style="margin:10px 0 0 0"><%= post.title %></h3>
     <p style="margin: 0"><%= post.body %></p>
     <% if user_signed_in? %>
-      <p style="margin: 0 0 15px 50px">Author: <%= current_user.name %></p>
+      <p style="margin: 0 0 15px 50px">Author: <%= post.user.name %></p>
     <% end %>
   </li>
   <% end %>
