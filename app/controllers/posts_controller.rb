@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_login, except: [:index]
+  # skip_before_action :require_login, only: [:index]
 
   def new
     @post = current_user.posts.new
@@ -19,6 +21,11 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def require_login
+    flash[:error] = 'You must be logged in to access this section' unless user_signed_in?
+    redirect_to new_user_session_path
+  end
 
   def post_params
     params.require(:post).permit(:title, :body)
